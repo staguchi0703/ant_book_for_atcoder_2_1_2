@@ -21,4 +21,12 @@ H, W = [int(item) for item in input().split()]
 map_grid = [input().split() for _ in range(H)]
 
 pprint.pprint(map_grid, width=W)
+
+for i in range(H):
+    for k in range(W):
+        if map_grid[i][k] == s:
+            start_point = [i, k]
+
+def search_g(start_point):
+    
 # print(map_grid)
