@@ -22,23 +22,49 @@ map_grid = [input() for _ in range(H)]
 
 # pprint.pprint(map_grid, width=W)
 
+# 開始地点の座標を探す
 for i in range(H):
     for k in range(W):
         if map_grid[i][k] == 's':
             start_point = [k, i] # x(k<<w), y(i << H)
 # print(start_point)
 
-
-foot_print = []
+# dfsもしくはbfsするキュー(スタック)を生成
 d = deque()
 d.append(start_point)
+#訪れた履歴を管理するスタックを生成
+f = deque()
 
+#とある座標の値を表示する関数（座標が定義外に飛んだ時にエラーとならないようにtry-exceptで無視できるようにするのがコツ）
 def temp_sign(temp_site):
-    return map_grid[temp_site[0]][temp_site[1]]
-
-
-while len(d) <= 0:
-    temp_site = d.pop()
-    if temp_sign(temp_site) == '.':
-        temp_site.append()
+    try:
+        res = map_grid[temp_site[0]][temp_site[1]]
+        return res
+    except:
+        pass
     
+
+next_direction_list = [[1, 0], [0,1], [-1, 0], [0, -1]]
+is_found = False
+
+while len(d) > 0:
+    temp_site = d.pop()
+    # print(temp_sign(temp_site))
+    if temp_sign(temp_site) == 'g':
+        is_found = True
+        break
+    
+    for next_dir in next_direction_list:
+
+        new_site = [x+y for (x, y) in zip(temp_site, next_dir) if x+y >= 0]
+        # print(new_site)
+
+        if temp_sign(new_site) in ['.', 'g'] and new_site not in f:
+            # print(new_site)
+            d.append(new_site)
+            f.append(new_site)
+
+if is_found:
+    print('Yes')
+else:
+    print('No')    
