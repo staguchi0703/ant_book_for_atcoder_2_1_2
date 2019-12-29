@@ -16,7 +16,33 @@ sys.stdin=f
 ##################################
 # %%
 # 以下ペースト可
-import pprint
+from collections import deque
 map_grid = [[ i for i in input()] for _ in range(10)]
 
 print(map_grid)
+
+def dfs(site, temp_grid):
+    y, x = site
+    if 0 <= y <= 9 and 0 <= x <= 9 and temp_grid[y][x] == 'o':
+        temp_grid[y][x] = 1
+    else:
+        return
+
+    dfs([y+1, x], temp_grid)
+    dfs([y, x+1], temp_grid)
+    dfs([y-1, x], temp_grid)
+    dfs([y, x-1], temp_grid)
+    
+for i in range(10):
+    for j in range(10):
+        temp_grid = map_grid
+        temp_grid[i][j] = 'o'
+        dfs([i, j], temp_grid)
+        print(temp_grid)
+        print('-----------------------')
+
+
+
+    
+
+
