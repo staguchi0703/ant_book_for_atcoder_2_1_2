@@ -33,7 +33,7 @@ def dfs(site, temp_grid):
     dfs([y, x+1], temp_grid)
     dfs([y-1, x], temp_grid)
     dfs([y, x-1], temp_grid)
-    
+
 for i in range(10):
     for j in range(10):
         temp_grid = copy.deepcopy(map_grid)
@@ -42,8 +42,15 @@ for i in range(10):
         print(temp_grid)
         print('-----------------------')
 
+        is_temp_o_found = False
 
+        for k in temp_grid:
+            if 'o' in k:
+                is_temp_o_found = True
 
-    
+        if not is_temp_o_found:
+            print('Yes')
+            break
+
 
 
