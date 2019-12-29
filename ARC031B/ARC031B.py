@@ -17,6 +17,7 @@ sys.stdin=f
 # %%
 # 以下ペースト可
 from collections import deque
+import copy
 map_grid = [[ i for i in input()] for _ in range(10)]
 
 print(map_grid)
@@ -35,7 +36,7 @@ def dfs(site, temp_grid):
     
 for i in range(10):
     for j in range(10):
-        temp_grid = map_grid
+        temp_grid = copy.deepcopy(map_grid)
         temp_grid[i][j] = 'o'
         dfs([i, j], temp_grid)
         print(temp_grid)
