@@ -20,7 +20,7 @@ from collections import deque
 import copy
 map_grid = [[ i for i in input()] for _ in range(10)]
 
-print(map_grid)
+# print(map_grid)
 
 def dfs(site, temp_grid):
     y, x = site
@@ -39,8 +39,8 @@ for i in range(10):
         temp_grid = copy.deepcopy(map_grid)
         temp_grid[i][j] = 'o'
         dfs([i, j], temp_grid)
-        print(temp_grid)
-        print('-----------------------')
+        # print(temp_grid)
+        # print('-----------------------')
 
         is_temp_o_found = False
 
@@ -49,8 +49,14 @@ for i in range(10):
                 is_temp_o_found = True
 
         if not is_temp_o_found:
-            print('Yes')
+            print('YES')
+            # print(temp_grid)
+            # print('-----------------------')
             break
-
+    else:
+        continue
+    break
+else:
+    print('NO')
 
 

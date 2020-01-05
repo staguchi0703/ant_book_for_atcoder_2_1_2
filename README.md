@@ -46,3 +46,39 @@
 import math
 ```
 
+#### [ARC031B 深さ優先探索](https://atcoder.jp/contests/arc031/tasks/arc031_2)
+
+* 方針
+  * deepcopyで毎回計算する盤面を新しくする
+  * 
+ 
+
+* 実装
+  * 答えが見つかれば二重ループを一発で抜けたい
+    * for文でのelseの使い方が重要
+      * breakするとelse:が実行されないため、次のbreakに進む。
+      * for loopが完了するとelseが実行されるので、continueが実行され外側のloopが次へ進む。
+  * 答えが見つからなかった場合の実行を行う
+    * for loopが全部回り切ったら答えが見つからなかったことになるため、最後のelse: が答えが見つからなかった時の処理。
+
+```python
+
+for i in some_list:
+    for j in somesome_list:
+        if some_condition:
+            print('YES')
+            break
+    else:
+        continue
+    break
+else:
+    print('NO')
+```
+
+
+
+
+
+```python
+import math
+```
