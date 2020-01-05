@@ -46,7 +46,7 @@
 import math
 ```
 
-#### [ARC031B 深さ優先探索](https://atcoder.jp/contests/arc031/tasks/arc031_2)
+#### [ARC031B 埋め立て](https://atcoder.jp/contests/arc031/tasks/arc031_2)
 
 * 方針
   * deepcopyで毎回計算する盤面を新しくする
@@ -76,7 +76,37 @@ else:
 ```
 
 
+```python
+import math
+```
 
+
+#### [ARC037B バウムテスト](https://atcoder.jp/contests/arc031/tasks/arc037_b)
+
+* 方針
+  * 
+  * 
+ 
+
+* 実装
+  * listのあるindexに値を追加したい。
+  * listはlistで値を持っている（ネストされている）
+  * `some_list[index] += value`と書くと`some_list[index]`にsome_listが入ってしまってハマった
+  * `some_list[index] = some_list[index] + value`と書くと思い通りに扱えた。
+
+```python
+
+for i in some_list:
+    for j in somesome_list:
+        if some_condition:
+            print('YES')
+            break
+    else:
+        continue
+    break
+else:
+    print('NO')
+```
 
 
 ```python

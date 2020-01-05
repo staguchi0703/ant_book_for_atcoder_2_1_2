@@ -20,14 +20,45 @@ sys.stdin=f
 N, M = [int(i) for i in input().split()]
 tree = [[int(i) for i in input().split()] for _ in range(M)]
 
-print(tree)
+# print(tree)
 
 link_list = [[]] * (N + 1)
-print(link_list)
+# print(link_list)
 
 for node, j in tree:
-    print(node, j)
-    link_list[node] = link_list[node] + [j]
+    # print(node, j)
+    temp = link_list[node] + [j]
+    link_list[node] = temp
 
+visited = [0]*(N+1)
 
-print(link_list)
+def search(k):
+
+    if visited[k] == 1:
+        return False
+    else:
+        que = [k, link_list[k]]
+
+    print(que)
+    is_search = True
+    while is_search:
+        x, y = que
+        visited[x] = 1
+        if y == []:
+            is_search = False
+        else:
+            for i in y:
+                if visited[i] == 1:
+                    is_search = False
+                    return False
+                else:
+                    visited[i] = 1
+                    que = [i, link_list[i]]
+    return True
+
+cnt = -1
+for k in range(N):
+    if search(k):
+        cnt += 1
+
+print(cnt)
